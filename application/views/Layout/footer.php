@@ -20,7 +20,7 @@
     }
 </script>
 
-<?php if($this->session->flashdata('success')): ?>
+<?php if($this->session->flashdata('success') || $this->session->flashdata('error')) { ?>
     <script>
         const Toast = Swal.mixin({
             toast: true,
@@ -29,16 +29,24 @@
             timer: 3000,
             timerProgressBar: true,
             didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
-        })
+        });
 
-        Toast.fire({
-            icon: 'success',
-            title: '<?= $this->session->flashdata('success') ?>'
-        })
+        <?php if($this->session->flashdata('success')) { ?>
+            Toast.fire({
+                icon: 'success',
+                title: '<?= $this->session->flashdata('success') ?>'
+            });
+        <?php } elseif($this->session->flashdata('error')) { ?>
+            Toast.fire({
+                icon: 'error',
+                title: '<?= $this->session->flashdata('error') ?>'
+            });
+        <?php } ?>
     </script>
-<?php endif ?>  
+<?php } ?>
+
 </body>
 </html>

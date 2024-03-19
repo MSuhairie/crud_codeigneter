@@ -6,12 +6,16 @@ class Kategori extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kategori_Model');
+        $this->load->model('Auth_Model');
+		if(!$this->Auth_Model->current_user()){
+			redirect(site_url());
+		}
     }
 
     public function index()
 	{
         $data = [
-            'meta' => ['title' => 'Data Kategori'],
+            'title' => 'Data Kategori',
             'kategori' => $this->Kategori_Model->TampilData(),
         ];
         
@@ -21,7 +25,7 @@ class Kategori extends CI_Controller {
     public function tambah()
     {        
         $data = [
-            'meta' => ['title' => 'Tambah Kategori'],
+            'title' => 'Tambah Kategori',
         ];
         $this->load->view('kategori/tambah', $data);
     }
@@ -60,7 +64,7 @@ class Kategori extends CI_Controller {
     public function edit($id)
     {
         $data = [
-            'meta' => ['title' => 'Edit Kategori'],
+            'title' => 'Edit Kategori',
             'kategori' => $this->Kategori_Model->DetailData($id),
         ];
         $this->load->view('kategori/edit', $data);

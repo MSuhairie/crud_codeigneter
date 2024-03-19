@@ -12,8 +12,8 @@
         <li class="nav-item">
           <a class="nav-link" href="<?= site_url('kategori') ?>">Kategori</a>
         </li>
-		<li class="nav-item">
-          <a class="nav-link" href="<?= site_url('auth/login') ?>">Login</a>
+		    <li class="nav-item">
+          <a class="nav-link" href="<?= site_url('logout'); ?>">Logout</a>
         </li>
     </div>
   </div>
