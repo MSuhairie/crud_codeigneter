@@ -6,11 +6,27 @@
     function deleteConfirm(event){
         Swal.fire({
             title: 'Delete Confirmation!',
-            text: 'Are you sure to delete the item?',
+            text: 'Anda Yakin Ingin Delete Data Ini?',
             icon: 'warning',
             showCancelButton: true,
             cancelButtonText: 'No',
             confirmButtonText: 'Yes Delete',
+            confirmButtonColor: 'red'
+        }).then(dialog => {
+            if(dialog.isConfirmed){
+                window.location.assign(event.dataset.deleteUrl);
+            }
+        });
+    }
+
+    function logoutConfirm(event){
+        Swal.fire({
+            title: 'Logout Confirmation!',
+            text: 'Anda Yakin Ingin Logout?',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            confirmButtonText: 'Yes',
             confirmButtonColor: 'red'
         }).then(dialog => {
             if(dialog.isConfirmed){

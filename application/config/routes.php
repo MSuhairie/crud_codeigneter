@@ -58,9 +58,16 @@ $route['logout'] = 'auth/logout';
 
 $route['home'] = 'home/index'; 
 
-$route['kategori'] = 'kategori/index'; // page adalah controller about adalah methodnya
+$route['kategori'] = 'kategori/index'; // kategori adalah controller index adalah methodnya
 $route['tambah-kategori'] = 'kategori/tambah';
 $route['insert-kategori'] = 'kategori/insert';
 $route['edit-kategori/(:num)'] = 'kategori/edit/$1';
 $route['update-kategori/(:num)'] = 'kategori/update/$1';
 $route['delete-kategori/(:num)'] = 'kategori/delete/$1';
+
+$route['berita'] = 'berita/index'; 
+$route['tambah-berita'] = 'berita/tambah';
+$route['insert-berita'] = 'berita/insert';
+$route['edit-berita/(:num)'] = 'berita/edit/$1';
+$route['update-berita/(:num)'] = 'berita/update/$1';
+$route['delete-berita/(:num)'] = 'berita/delete/$1';

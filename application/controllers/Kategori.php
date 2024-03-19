@@ -15,7 +15,6 @@ class Kategori extends CI_Controller {
     public function index()
 	{
         $data = [
-            'title' => 'Data Kategori',
             'kategori' => $this->Kategori_Model->TampilData(),
         ];
         
@@ -24,10 +23,7 @@ class Kategori extends CI_Controller {
 
     public function tambah()
     {        
-        $data = [
-            'title' => 'Tambah Kategori',
-        ];
-        $this->load->view('kategori/tambah', $data);
+        $this->load->view('kategori/tambah');
     }
 
     public function insert()
@@ -46,25 +42,21 @@ class Kategori extends CI_Controller {
         $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, kembali ke halaman tambah dengan pesan error
-            $this->session->set_flashdata('error', validation_errors());
-            redirect('tambah-kategori');
-        } else {
-            // Jika validasi berhasil, simpan data dan kembali ke halaman kategori
-            $data = [
-                'nama_kategori' => $this->input->post('nama_kategori'),
-            ];
-    
-            $this->Kategori_Model->TambahData($data);
-            $this->session->set_flashdata('success', 'Data Berhasil Disimpan');
-            redirect('kategori');
+            return $this->load->view('kategori/tambah');
         }
+
+        $data = [
+            'nama_kategori' => $this->input->post('nama_kategori'),
+        ];
+
+        $this->Kategori_Model->TambahData($data);
+        $this->session->set_flashdata('success', 'Data Berhasil Disimpan');
+        redirect('kategori');
     }
 
     public function edit($id)
     {
         $data = [
-            'title' => 'Edit Kategori',
             'kategori' => $this->Kategori_Model->DetailData($id),
         ];
         $this->load->view('kategori/edit', $data);
@@ -86,18 +78,16 @@ class Kategori extends CI_Controller {
         $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, kembali ke halaman tambah dengan pesan error
-            $this->session->set_flashdata('error', validation_errors());
-            redirect('edit-kategori/'. $id);
-        } else {
-            $data = [
-                'nama_kategori' => $this->input->post('nama_kategori'),
-            ];  
-
-            $this->Kategori_Model->EditData($id, $data);
-            $this->session->set_flashdata('success', 'Data Berhasil Diedit');
-            redirect('kategori');
+            return redirect('edit-kategori/'. $id);
         }
+
+        $data = [
+            'nama_kategori' => $this->input->post('nama_kategori'),
+        ];  
+
+        $this->Kategori_Model->EditData($id, $data);
+        $this->session->set_flashdata('success', 'Data Berhasil Diedit');
+        redirect('kategori');
     }
 
     public function delete($id)

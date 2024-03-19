@@ -12,9 +12,20 @@
         <li class="nav-item">
           <a class="nav-link" href="<?= site_url('kategori') ?>">Kategori</a>
         </li>
-		    <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('logout'); ?>">Logout</a>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= site_url('berita') ?>">Berita</a>
         </li>
+      </ul>
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-primary dropdown-toggle text-capitalize" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-user"></i> <?= $this->session->nama ?>
+        </button>
+        <ul class="dropdown-menu">
+          <li><button class="dropdown-item text-capitalize"><?= $this->session->username ?></button></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" data-delete-url="<?= site_url('logout'); ?>" onclick="logoutConfirm(this)"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
