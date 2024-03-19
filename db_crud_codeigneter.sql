@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 Mar 2024 pada 21.42
+-- Generation Time: 19 Mar 2024 pada 19.50
 -- Versi Server: 10.1.8-MariaDB
 -- PHP Version: 5.6.14
 
@@ -28,12 +28,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_berita` (
   `id_berita` int(11) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
   `isi` text NOT NULL,
   `tanggal` date NOT NULL,
   `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_berita`
+--
+
+INSERT INTO `tb_berita` (`id_berita`, `judul`, `isi`, `tanggal`, `gambar`) VALUES
+(8, 'Administrasi', 'saasa', '2024-03-24', 'sedan.jpg');
 
 -- --------------------------------------------------------
 
@@ -51,8 +57,7 @@ CREATE TABLE `tb_kategori` (
 --
 
 INSERT INTO `tb_kategori` (`id_kategori`, `nama_kategori`) VALUES
-(13, 'Bola'),
-(23, 'Bola2');
+(13, 'sss');
 
 -- --------------------------------------------------------
 
@@ -66,6 +71,13 @@ CREATE TABLE `tb_user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_user`
+--
+
+INSERT INTO `tb_user` (`id_user`, `nama`, `username`, `password`) VALUES
+(1, 'Suhairie', 'admin', '$2y$10$1EDXQ2nL51QPNfOUF4IwYeLohfEbw.av4jQUpfwGsPXYTyDPAeYfa');
 
 --
 -- Indexes for dumped tables
@@ -97,17 +109,17 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_berita`
 --
 ALTER TABLE `tb_berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
